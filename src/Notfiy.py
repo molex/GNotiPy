@@ -28,8 +28,8 @@ def SendMail(to_address, an_event):
     for a_when in an_event.when:
         start = datetime.strftime(dateutil.parser.parse(a_when.start), "%m/%d/%y %I:%M")
         print start
-    SUBJECT = "Tot Spot Duties"    
-    text = string.join(("You have signed up for %s" % an_event.title.text,
+    SUBJECT = config['subject']    
+    text = string.join((config['body'] % an_event.title.text,
                         "On %s " % start, "\r\n"))
     secret = config['secret']
     if(to_address != FROM):
